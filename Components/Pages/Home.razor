@@ -1,0 +1,51 @@
+﻿@page "/"
+@using MathProject.Models
+
+<PageTitle>ויקי-בגרות 371</PageTitle>
+
+<h1>מרכז הלמידה של כיתת מב"ר - שאלון 371</h1>
+
+<div class="container">
+    <div class="header-section">
+        <h1> המעבדה המתמטית</h1>
+        <div class="header-accent"></div>
+    </div>
+
+    <div class="main-grid">
+        @foreach (var p in projects)
+        {
+            <ProjectCard Project="p" />
+        }
+    </div>
+</div>
+
+@code {
+    private List<MathProject> projects = new List<MathProject>
+{
+        new MathProject {
+            Topic = "הסתברות",
+            Students = "דני, נועה, אבי ושי",
+            IsCompleted = true,
+            PresentationLink = "#", // כאן יבוא הלינק האמיתי
+            VideoLink = "#",
+            ExercisesLink = "#"
+        },
+        new MathProject {
+            Topic = "גדילה ודעיכה",
+            Students = "מיכל, רוני, עידו וטל",
+            IsCompleted = false,
+            PresentationLink = "#",
+            VideoLink = "#",
+            ExercisesLink = "#"
+        },
+        new MathProject {
+            Topic = "גדילה ודעיכה",
+            Students = "מיכל, רוני, עידו וטל",
+            IsCompleted = false,
+            PresentationLink = "#",
+            VideoLink = "#",
+            ExercisesLink = "#"
+        }
+        // אפשר להוסיף פה את שאר הנושאים מהמצגת: טריגונומטריה, סטטיסטיקה וכו'
+    };
+}

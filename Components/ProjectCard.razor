@@ -1,0 +1,20 @@
+﻿@using MathProject.Models;
+
+<div class="project-card">
+    <h3>@Project.Topic</h3>
+    <p class="students">מוגש ע"י : @Project.Students"</p>
+    <div class="status @(Project.IsCompleted ? "done" : "working")">
+        @(Project.IsCompleted ? "✅ מוכן ללמידה" : "⏳ בעבודה")
+    </div>
+
+    <div class="links-grid">
+        <a href="@Project.PresentationLink" target="_blank" class="btn">מצגת לימודית 📊</a>
+        <a href="@Project.VideoLink" target="_blank" class="btn">סרטון הסבר 🎥</a>
+        <a href="@Project.ExercisesLink" target="_blank" class="btn">תרגול בגרות 📝</a>
+    </div>
+</div>
+
+
+@code {
+    [Parameter] public MathProject Project { get; set; }
+}

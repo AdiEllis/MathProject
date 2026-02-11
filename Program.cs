@@ -1,4 +1,5 @@
 using MathProject;
+using MathProject.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 

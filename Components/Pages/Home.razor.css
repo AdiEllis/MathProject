@@ -1,0 +1,64 @@
+﻿body {
+    background-color: #f4f7f9;
+    /* אפקט של דף משבצות עדין שמתאים למתמטיקה וסרטוט */
+    background-image: linear-gradient(#e1e8ed 1px, transparent 1px), linear-gradient(90deg, #e1e8ed 1px, transparent 1px);
+    background-size: 20px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.main-grid {
+    display: grid;
+    /* זה גורם לכרטיסיות להסתדר לבד לפי רוחב המסך */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px; /* רווח בין הכרטיסיות */
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* עיצוב כותרת "מתפוצצת" ומעניינת */
+.header-section {
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+h1 {
+    font-size: 3rem;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-weight: 800;
+    /* שילוב של צבע כחול-מתמטי */
+    background: linear-gradient(120deg, #1e3c72 0%, #2a5298 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: fit-content; /* גורם לרקע ה-gradient להישאר רק על הטקסט */
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #5d6d7e;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* פס דקורטיבי מתחת לכותרת בהשראת ה-AI */
+.header-accent {
+    width: 100px;
+    height: 4px;
+    background: #4a90e2;
+    margin: 20px auto;
+    border-radius: 2px;
+}
