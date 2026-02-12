@@ -10,7 +10,40 @@
     margin: 10px;
     display: flex;
     flex-direction: column;
-    min-width: 300px;
+    min-width: 0;
+    margin: 5px;
+}
+
+@media (max-width: 767px) {
+    .project-card {
+        padding: 12px; /* צמצום הפדינג כדי שיהיה מקום לתוכן */
+        border-right-width: 4px; /* פס כחול טיפה יותר דק שמתאים לגודל */
+    }
+
+        .project-card h3 {
+            font-size: 1rem; /* הקטנת הכותרת */
+            white-space: normal; /* לאפשר לשם הנושא לרדת שורה אם הוא ארוך */
+            line-height: 1.2;
+        }
+
+    .students {
+        font-size: 0.8rem; /* הקטנת שם התלמידים */
+    }
+
+    .links-container {
+        gap: 8px; /* צמצום המרווח בין הכפתורים */
+        margin-top: 10px;
+    }
+
+    .custom-btn {
+        padding: 8px 10px; /* כפתורים קומפקטיים יותר */
+        font-size: 0.8rem;
+        gap: 6px; /* צמצום המרווח בין האייקון לטקסט */
+    }
+
+    .badge {
+        display: none; /* במובייל עדיף להחביא את ה"טרם הועלה" כדי לחסוך מקום, הצבע האפור כבר מסגיר את זה */
+    }
 }
 
     .project-card:hover {
@@ -27,17 +60,25 @@
 .custom-btn {
     display: flex;
     align-items: center;
-    padding: 12px 15px;
+    justify-content: flex-start; /* יישור הטקסט והאייקון להתחלה */
+    padding: 10px;
     border-radius: 10px;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.95rem;
-    gap: 12px;
-    transition: all 0.2s;
-    border: 1px solid #eee;
-    background: #fdfdfd;
-    color: #333;
-    position: relative;
+    flex-grow: 1; /* יגרום לכל הכפתורים להימתח לאותו רוחב */
+    min-height: 45px; /* מבטיח גובה אחיד לכל הכפתורים */
+    font-size: 0.85rem;
+    gap: 8px;
+}
+
+@media (max-width: 767px) {
+    .custom-btn {
+        font-size: 0.75rem; /* טקסט קטן יותר למובייל */
+        padding: 8px 6px;
+        gap: 4px;
+    }
+
+        .custom-btn i {
+            font-size: 0.85rem; /* הקטנת האייקון של הכפתור */
+        }
 }
 
     /* מצב חסום - כשאין לינק */
@@ -103,6 +144,18 @@
     align-items: center;
     gap: 8px;
     width: 100%;
+    position: relative;
+}
+@media (max-width: 767px) {
+    .edit-wrapper {
+        /* במובייל - העיפרון יצוף מעל הכפתור או יהיה קטן יותר כדי לא לגנוב רוחב */
+        gap: 4px;
+    }
+
+    .edit-icon-btn {
+        font-size: 0.9rem; /* הקטנת האייקון */
+        padding: 2px;
+    }
 }
 
     .edit-wrapper .custom-btn {
