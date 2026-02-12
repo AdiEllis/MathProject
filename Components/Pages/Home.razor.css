@@ -5,15 +5,24 @@
     background-size: 20px 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
+/* הגדרת הגריד כדי שהכרטיסיות יעמדו אחת ליד השנייה */
 .main-grid {
     display: grid;
-    /* זה גורם לכרטיסיות להסתדר לבד לפי רוחב המסך */
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 25px; /* רווח בין הכרטיסיות */
-    padding: 20px;
+    /* יוצר טורים אוטומטיים: מינימום 280 פיקסלים לכרטיסייה */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 15px;
     width: 100%;
-    box-sizing: border-box;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* תיקון לכותרת שתהיה קטנה יותר בטלפון (רספונסיביות) */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.8rem !important;
+        text-align: center;
+    }
 }
 
 .container {
@@ -25,14 +34,14 @@
 /* עיצוב כותרת "מתפוצצת" ומעניינת */
 .header-section {
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
     position: relative;
 }
 
 h1 {
     font-size: 3rem;
     color: #2c3e50;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     font-weight: 800;
     /* שילוב של צבע כחול-מתמטי */
     background: linear-gradient(120deg, #1e3c72 0%, #2a5298 100%);

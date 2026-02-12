@@ -1,56 +1,97 @@
-﻿/* בתוך ProjectCard.razor.css */
-
-.project-card {
+﻿.project-card {
     background: #ffffff;
     border-radius: 15px;
     padding: 24px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05); /* צל עדין ומודרני */
-    border-right: 6px solid #4a90e2; /* פס צבע בצד ימין (עברית) */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    border-right: 6px solid #4a90e2;
     text-align: right;
     direction: rtl;
     transition: transform 0.2s ease;
-    margin-bottom: 20px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
 }
 
     .project-card:hover {
-        transform: translateY(-5px); /* אפקט ריחוף קטן */
+        transform: translateY(-5px);
     }
 
-h3 {
-    color: #2c3e50;
-    margin-top: 0;
-    font-size: 1.5rem;
-}
-
-.students {
-    color: #7f8c8d;
-    font-size: 0.9rem;
-    margin-bottom: 15px;
-}
-
-.links-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* שני כפתורים בשורה */
+.links-container {
+    display: flex;
+    flex-direction: column;
     gap: 12px;
     margin-top: 20px;
 }
 
-/* הכפתור של הסרטון (תוצר 2) יהיה בולט יותר */
-.btn {
+.custom-btn {
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 12px;
-    background: #f8f9fa;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
+    padding: 12px 15px;
+    border-radius: 10px;
     text-decoration: none;
-    color: #444;
     font-weight: 500;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+    gap: 12px;
+    transition: all 0.2s;
+    border: 1px solid #eee;
+    background: #fdfdfd;
+    color: #333;
+    position: relative;
 }
 
-    .btn:hover {
-        background: #4a90e2;
-        color: white;
+    /* מצב חסום - כשאין לינק */
+    .custom-btn.disabled {
+        opacity: 0.5;
+        filter: grayscale(1);
+        pointer-events: none; /* מונע לחיצה */
+        background: #f5f5f5;
+    }
+
+.badge {
+    font-size: 0.7rem;
+    background: #e0e0e0;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-right: auto; /* דוחף את התווית שמאלה */
+}
+
+/* אפקטים במעבר עכבר לכפתורים פעילים */
+.custom-btn.active.btn-pres:hover {
+    background: #e7f1ff;
+    color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.custom-btn.active.btn-video:hover {
+    background: #fdf2f2;
+    color: #dc3545;
+    border-color: #dc3545;
+}
+
+.custom-btn.active.btn-practice:hover {
+    background: #f2f9f2;
+    color: #198754;
+    border-color: #198754;
+}
+
+.status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    width: fit-content;
+}
+
+    .status.working {
+        background: #fff3cd;
+        color: #856404;
+    }
+
+    .status.done {
+        background: #d4edda;
+        color: #155724;
     }

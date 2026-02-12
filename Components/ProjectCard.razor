@@ -2,18 +2,43 @@
 
 <div class="project-card">
     <h3>@Project.Topic</h3>
-    <p class="students">מוגש ע"י : @Project.Students"</p>
+    <p class="students">מוגש ע"י: @Project.Students</p>
+
+    @* סטטוס כללי של הפרויקט *@
     <div class="status @(Project.IsCompleted ? "done" : "working")">
-        @(Project.IsCompleted ? "✅ מוכן ללמידה" : "⏳ בעבודה")
+        <i class="bi @(Project.IsCompleted ? "bi-check-circle-fill" : "bi-hourglass-split")"></i>
+        @(Project.IsCompleted ? "מוכן ללמידה" : "בעבודה")
     </div>
 
-    <div class="links-grid">
-        <a href="@Project.PresentationLink" target="_blank" class="btn">מצגת לימודית 📊</a>
-        <a href="@Project.VideoLink" target="_blank" class="btn">סרטון הסבר 🎥</a>
-        <a href="@Project.ExercisesLink" target="_blank" class="btn">תרגול בגרות 📝</a>
+    <div class="links-container">
+        @* כפתור מצגת *@
+        <a href="@Project.PresentationLink" target="_blank"
+           class="custom-btn btn-pres @(string.IsNullOrEmpty(Project.PresentationLink) ? "disabled" : "active")">
+            <i class="bi bi-file-easel"></i>
+            <span>מצגת לימודית</span>
+            @if (string.IsNullOrEmpty(Project.PresentationLink))
+            {<span class="badge">טרם הועלה</span>}
+        </a>
+
+        @* כפתור סרטון *@
+        <a href="@Project.VideoLink" target="_blank"
+           class="custom-btn btn-video @(string.IsNullOrEmpty(Project.VideoLink) ? "disabled" : "active")">
+            <i class="bi bi-play-btn"></i>
+            <span>סרטון הסבר</span>
+            @if (string.IsNullOrEmpty(Project.VideoLink))
+            {<span class="badge">טרם הועלה</span>}
+        </a>
+
+        @* כפתור תרגול *@
+        <a href="@Project.ExercisesLink" target="_blank"
+           class="custom-btn btn-practice @(string.IsNullOrEmpty(Project.ExercisesLink) ? "disabled" : "active")">
+            <i class="bi bi-pencil-square"></i>
+            <span>תרגול בגרות</span>
+            @if (string.IsNullOrEmpty(Project.ExercisesLink))
+            {<span class="badge">טרם הועלה</span>}
+        </a>
     </div>
 </div>
-
 
 @code {
     [Parameter] public MathProject Project { get; set; }
