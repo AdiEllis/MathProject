@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "MathProject",
   "resources": {
-    "hash": "sha256-tX/o3JWYtFLeSfs6LUBQ0qrQ5KLeHYrnpWMNDYx80Ac=",
+    "hash": "sha256-I5Ul3LOSPViwGsyjg5yMarRIgiA3cDrGPapJWKIvx/Q=",
     "jsModuleNative": {
       "dotnet.native.js": "sha256-NljIbpK/1KCj0+knpX8U77Rbl5kTtfFIuFjK7AuczEw="
     },
@@ -80,7 +80,7 @@
       "System.wasm": "sha256-jXhnUNHzjjL7Plo7WcHuX7V5Dc/Umt+qmGGC+Js76SE=",
       "netstandard.wasm": "sha256-gZG9lj2axXm4C9F23+kUt/t85487FFuVoCQQ0QDyWxg=",
       "System.Private.CoreLib.wasm": "sha256-ycwRKgZOQsl4jlUqp+af8EKSqswkQ78tYKs4f31H2Xw=",
-      "MathProject.wasm": "sha256-FAq+BrU6XK5+SBIDj2qSSou1fPIpqru6/Z8J3IYmrPM="
+      "MathProject.wasm": "sha256-DP9V+PPpJ8/ufeIes4WROeS34rWZQf7svIvHHu/2dIE="
     }
   },
   "cacheBootResources": true,
