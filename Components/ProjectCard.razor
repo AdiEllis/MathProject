@@ -5,41 +5,92 @@
     <p class="students">מוגש ע"י: @Project.Students</p>
 
     @* סטטוס כללי של הפרויקט *@
-    <div class="status @(Project.IsCompleted ? "done" : "working")">
+    <div class="status @(IsComplete() ? "done" : "working")">
         <i class="bi @(Project.IsCompleted ? "bi-check-circle-fill" : "bi-hourglass-split")"></i>
-        @(Project.IsCompleted ? "מוכן ללמידה" : "בעבודה")
+        @(IsComplete() ? "מוכן ללמידה" : "בעבודה")
     </div>
 
     <div class="links-container">
         @* כפתור מצגת *@
-        <a href="@Project.PresentationLink" target="_blank"
-           class="custom-btn btn-pres @(string.IsNullOrEmpty(Project.PresentationLink) ? "disabled" : "active")">
-            <i class="bi bi-file-easel"></i>
-            <span>מצגת לימודית</span>
-            @if (string.IsNullOrEmpty(Project.PresentationLink))
-            {<span class="badge">טרם הועלה</span>}
-        </a>
+        <div class="edit-wrapper">
+            <a href="@Project.PresentationLink" target="_blank"
+               class="custom-btn btn-pres @(string.IsNullOrEmpty(Project.PresentationLink) ? "disabled" : "active")">
+                <i class="bi bi-file-easel"></i>
+                <span>מצגת לימודית</span>
+                @if (string.IsNullOrEmpty(Project.PresentationLink))
+                {<span class="badge">טרם הועלה</span>}
+            </a>
+            <button class="edit-icon-btn" @onclick="() => showEditPres = !showEditPres">
+                <i class="bi bi-pencil"></i>
+            </button>
+        </div>
+        @if (showEditPres)
+        {
+            <div class="edit-box">
+                <input @bind="Project.PresentationLink" placeholder="הדבק לינק למצגת..." />
+                <button @onclick="() => showEditPres = false">שמור</button>
+            </div>
+        }
+
 
         @* כפתור סרטון *@
-        <a href="@Project.VideoLink" target="_blank"
-           class="custom-btn btn-video @(string.IsNullOrEmpty(Project.VideoLink) ? "disabled" : "active")">
-            <i class="bi bi-play-btn"></i>
-            <span>סרטון הסבר</span>
-            @if (string.IsNullOrEmpty(Project.VideoLink))
-            {<span class="badge">טרם הועלה</span>}
-        </a>
+        <div class="edit-wrapper">
+            <a href="@Project.VideoLink" target="_blank"
+               class="custom-btn btn-video @(string.IsNullOrEmpty(Project.VideoLink) ? "disabled" : "active")">
+                <i class="bi bi-play-btn"></i>
+                <span>סרטון הסבר</span>
+                @if (string.IsNullOrEmpty(Project.VideoLink))
+                {<span class="badge">טרם הועלה</span>}
+            </a>
+            <button class="edit-icon-btn" @onclick="() => showEditVideo = !showEditVideo">
+                <i class="bi bi-pencil"></i>
+            </button>
+        </div>
+        @if (showEditVideo)
+        {
+            <div class="edit-box">
+                <input @bind="Project.VideoLink" placeholder="הדבק לינק לסרטון..." />
+                <button @onclick="() => showEditVideo = false">שמור</button>
+            </div>
+        }
+
 
         @* כפתור תרגול *@
-        <a href="@Project.ExercisesLink" target="_blank"
-           class="custom-btn btn-practice @(string.IsNullOrEmpty(Project.ExercisesLink) ? "disabled" : "active")">
-            <i class="bi bi-pencil-square"></i>
-            <span>תרגול בגרות</span>
-            @if (string.IsNullOrEmpty(Project.ExercisesLink))
-            {<span class="badge">טרם הועלה</span>}
-        </a>
+        @* --- חלק התרגול --- *@
+        <div class="edit-wrapper">
+            <a href="@Project.ExercisesLink" target="_blank"
+               class="custom-btn btn-practice @(string.IsNullOrEmpty(Project.ExercisesLink) ? "disabled" : "active")">
+                <i class="bi bi-pencil-square"></i>
+                <span>תרגול בגרות</span>
+                @if (string.IsNullOrEmpty(Project.ExercisesLink))
+                {<span class="badge">טרם הועלה</span>}
+            </a>
+            <button class="edit-icon-btn" @onclick="() => showEditEx = !showEditEx">
+                <i class="bi bi-pencil"></i>
+            </button>
+        </div>
+        @if (showEditEx)
+        {
+            <div class="edit-box">
+                <input @bind="Project.ExercisesLink" placeholder="הדבק לינק לתרגול..." />
+                <button @onclick="() => showEditEx = false">שמור</button>
+            </div>
+        }
     </div>
 </div>
 
 @code {
     [Parameter] public MathProject Project { get; set; }
+
+    public bool IsComplete()
+    {
+        return !string.IsNullOrEmpty(Project.PresentationLink) &&
+            !string.IsNullOrEmpty(Project.VideoLink) &&
+            !string.IsNullOrEmpty(Project.ExercisesLink);
+    }
+
+    // משתנים לשליטה על הצגת תיבות העריכה
+    private bool showEditPres = false;
+    private bool showEditVideo = false;
+    private bool showEditEx = false;
 }

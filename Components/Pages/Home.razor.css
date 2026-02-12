@@ -39,20 +39,26 @@
 }
 
 h1 {
-    font-size: 3rem;
-    color: #2c3e50;
-    margin-bottom: 5px;
-    font-weight: 800;
-    /* שילוב של צבע כחול-מתמטי */
-    background: linear-gradient(120deg, #1e3c72 0%, #2a5298 100%);
+    /* שימוש ב-clamp גורם לכותרת להיות גדולה במחשב וקטנה אוטומטית בטלפון */
+    font-size: clamp(1.8rem, 5vw, 3.5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -1.5px; /* מראה מהודק ומודרני של כותרות עיתון/מגזין */
+    margin-bottom: 15px;
+    padding: 10px 10px;
+    /* גרדיאנט תלת-שכבתי עמוק יותר */
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #48c6ef 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    /* הוספת עומק באמצעות פילטר צל (עובד מצוין עם גרדיאנט טקסט) */
+    filter: drop-shadow(0px 5px 15px rgba(30, 60, 114, 0.2));
     text-align: center;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    text-align: center;
-    width: fit-content; /* גורם לרקע ה-gradient להישאר רק על הטקסט */
+    width: fit-content;
+    /* אנימציית כניסה חלקה שמרגישה מקצועית */
+    animation: titleEntrance 1s cubic-bezier(0.23, 1, 0.32, 1) both;
 }
 
 .subtitle {
@@ -65,9 +71,11 @@ h1 {
 
 /* פס דקורטיבי מתחת לכותרת בהשראת ה-AI */
 .header-accent {
-    width: 100px;
-    height: 4px;
-    background: #4a90e2;
-    margin: 20px auto;
-    border-radius: 2px;
+    width: 80px;
+    height: 6px;
+    background: linear-gradient(90deg, #1e3c72, #48c6ef);
+    margin: 10px auto 40px;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(72, 198, 239, 0.4);
+    animation: accentExpand 1.5s ease-out 0.5s both;
 }

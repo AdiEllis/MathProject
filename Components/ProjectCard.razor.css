@@ -54,6 +54,8 @@
     padding: 2px 6px;
     border-radius: 4px;
     margin-right: auto; /* דוחף את התווית שמאלה */
+    color: black;
+    
 }
 
 /* אפקטים במעבר עכבר לכפתורים פעילים */
@@ -95,3 +97,65 @@
         background: #d4edda;
         color: #155724;
     }
+
+.edit-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+    .edit-wrapper .custom-btn {
+        flex-grow: 1; /* שהכפתור יתפוס את רוב הרוחב */
+    }
+
+.edit-icon-btn {
+    background: none;
+    border: none;
+    color: #4a90e2;
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 5px;
+    transition: transform 0.2s;
+}
+
+    .edit-icon-btn:hover {
+        transform: scale(1.2);
+        color: #1e3c72;
+    }
+
+.edit-box {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 10px;
+    animation: fadeIn 0.3s ease;
+}
+
+    .edit-box input {
+        flex-grow: 1;
+        padding: 5px 10px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        font-size: 0.85rem;
+    }
+
+    .edit-box button {
+        background: #28a745;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
