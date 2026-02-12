@@ -1,0 +1,24 @@
+name: Deploy to GitHub Pages
+on:
+  push:
+    branches: [ master ] # ודאי שזה שם הענף שלך
+jobs:
+  deploy-to-github-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x' # הגרסה שבה את משתמשת
+      - name: Publish
+        run: dotnet publish MathProject.csproj -c Release -o release --nologo
+      - name: Change base-tag in index.html from / to MathProject
+        run: sed -i 's/<base href="\/" \/>/<base href="\/MathProject\/" \/>/g' release/wwwroot/index.html
+      - name: Add .nojekyll file
+        run: touch release/wwwroot/.nojekyll
+      - name: Commit build artifacts
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: release/wwwroot
+          branch: gh-pages
