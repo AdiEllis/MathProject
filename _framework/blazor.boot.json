@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "MathProject",
   "resources": {
-    "hash": "sha256-Jz161Yx4GGIaIHkwnV+tLBka6+LQnG/YHnkAdNGUbRg=",
+    "hash": "sha256-iaAf7h815OwbEGbbA0wFNHBkCXr/zDFEgq9n6R5yZF4=",
     "jsModuleNative": {
       "dotnet.native.js": "sha256-NljIbpK/1KCj0+knpX8U77Rbl5kTtfFIuFjK7AuczEw="
     },
@@ -67,7 +67,7 @@
       "System.Runtime.Numerics.wasm": "sha256-1+j/N+URKaDYFdyb+3YJnPAKl+ClialLG1R+4owo+Pg=",
       "System.Runtime.Serialization.Formatters.wasm": "sha256-6Qbmf2FTowf1iMMK1Anv2+gATUmHikEIW6DMcFfb1FA=",
       "System.Runtime.Serialization.Primitives.wasm": "sha256-6+pcBu86Mt73RHJPvk/bjWu2Ymys1q2Ido0BcyWs9UM=",
-      "System.Runtime.wasm": "sha256-CJXTEcjMstn7QSGNr2UmO8KNp/iRaB60Rf6aZyly+QU=",
+      "System.Runtime.wasm": "sha256-FtcErTPaZUOijdPr7dT++bTuR6LVUgPW8h9vrMn/lCg=",
       "System.Security.Cryptography.wasm": "sha256-4VivBrmA5YmgW3K9IxZhKpNXMc7jEa8wJs8cqtaDQNc=",
       "System.Text.Encoding.Extensions.wasm": "sha256-au0ZvmnkBJAxTDg2H7xvBI3JyLzgffZxdh2ITjL+o2A=",
       "System.Text.Encodings.Web.wasm": "sha256-YZTyVkf+6++HcEP8mHZ6czMP3Ul886NWB5TYbCMFawE=",
@@ -80,7 +80,7 @@
       "System.wasm": "sha256-jXhnUNHzjjL7Plo7WcHuX7V5Dc/Umt+qmGGC+Js76SE=",
       "netstandard.wasm": "sha256-gZG9lj2axXm4C9F23+kUt/t85487FFuVoCQQ0QDyWxg=",
       "System.Private.CoreLib.wasm": "sha256-ycwRKgZOQsl4jlUqp+af8EKSqswkQ78tYKs4f31H2Xw=",
-      "MathProject.wasm": "sha256-tJfXUTl7CURIWvDtiEXHXh0dxNg3IheQQNf9ZI4/Ox4="
+      "MathProject.wasm": "sha256-y/3QdSYB1gPO+Ollv6hc7Iv6GJLgU02pxVUhgZj3zV4="
     }
   },
   "cacheBootResources": true,
