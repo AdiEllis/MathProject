@@ -1,4 +1,6 @@
 ﻿@using MathProject.Models;
+@inject NavigationManager NavManager
+@inject IJSRuntime JSRuntime
 
 <div class="project-card">
     <h3>@Project.Topic</h3>
@@ -6,15 +8,16 @@
 
     @* סטטוס כללי של הפרויקט *@
     <div class="status @(IsComplete() ? "done" : "working")">
-        <i class="bi @(Project.IsCompleted ? "bi-check-circle-fill" : "bi-hourglass-split")"></i>
+        <i class="bi @(IsComplete() ? "bi-check-circle-fill" : "bi-hourglass-split")"></i>
         @(IsComplete() ? "מוכן ללמידה" : "בעבודה")
     </div>
 
     <div class="links-container">
         @* כפתור מצגת *@
         <div class="edit-wrapper">
-            <a href="@Project.PresentationLink" target="_blank"
-               class="custom-btn btn-pres @(string.IsNullOrEmpty(Project.PresentationLink) ? "disabled" : "active")">
+            <a href="@Project.PresentationLink"
+               target="_blank"
+               class="custom-btn btn-pres @(string.IsNullOrEmpty(Project.PresentationLink) ? "disabled" : "active")"
                 <i class="bi bi-file-easel"></i>
                 <span>מצגת לימודית</span>
                 @if (string.IsNullOrEmpty(Project.PresentationLink))
@@ -87,6 +90,15 @@
         return !string.IsNullOrEmpty(Project.PresentationLink) &&
             !string.IsNullOrEmpty(Project.VideoLink) &&
             !string.IsNullOrEmpty(Project.ExercisesLink);
+    }
+
+    private async Task OpenLink(string url)
+    {
+        if (!string.IsNullOrEmpty(url))
+        {
+            // הפקודה הזו אומרת לדפדפן לפתוח חלון חדש בצורה חיצונית לחלוטין ל-Blazor
+            await JSRuntime.InvokeVoidAsync("open", url, "_blank");
+        }
     }
 
     // משתנים לשליטה על הצגת תיבות העריכה

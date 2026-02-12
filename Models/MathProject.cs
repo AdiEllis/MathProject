@@ -7,7 +7,6 @@
         public string PresentationLink { get; set; } 
         public string VideoLink { get; set; } 
         public string ExercisesLink { get; set; }
-        public bool IsCompleted { get; set; }
 
         // status
         public bool HasPresentation { get; set; }
