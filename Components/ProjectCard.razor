@@ -1,6 +1,7 @@
 ﻿@using MathProject.Models;
 @inject NavigationManager NavManager
 @inject IJSRuntime JSRuntime
+@inject FirebaseService FirebaseService
 
 <div class="project-card">
     <h3>@Project.Topic</h3>
@@ -23,16 +24,22 @@
                 @if (string.IsNullOrEmpty(Project.PresentationLink))
                 {<span class="badge">טרם הועלה</span>}
             </a>
-            <button class="edit-icon-btn" @onclick="() => showEditPres = !showEditPres">
+            <button class="edit-icon-btn" @onclick="ToggleEditPres">
                 <i class="bi bi-pencil"></i>
             </button>
         </div>
         @if (showEditPres)
         {
             <div class="edit-box">
-                <input @bind="Project.PresentationLink" placeholder="הדבק לינק למצגת..." />
-                <button @onclick="() => showEditPres = false">שמור</button>
+                <input @bind="Project.PresentationLink" autofocus placeholder="הדבק לינק למצגת..." />
+                <button @onclick="OnPresentationLinkUpdate">שמור</button>
             </div>
+            @if (showAlert)
+            {
+                <div class="alert alert-danger" role="alert">
+                    הקישור שהזנת אינו תקין.
+                </div>
+            }
         }
 
 
@@ -45,16 +52,22 @@
                 @if (string.IsNullOrEmpty(Project.VideoLink))
                 {<span class="badge">טרם הועלה</span>}
             </a>
-            <button class="edit-icon-btn" @onclick="() => showEditVideo = !showEditVideo">
+            <button class="edit-icon-btn" @onclick="ToggleVideoPres">
                 <i class="bi bi-pencil"></i>
             </button>
         </div>
         @if (showEditVideo)
         {
             <div class="edit-box">
-                <input @bind="Project.VideoLink" placeholder="הדבק לינק לסרטון..." />
-                <button @onclick="() => showEditVideo = false">שמור</button>
+                <input @bind="Project.VideoLink" placeholder="הדבק לינק לסרטון..." autofocus />
+                <button @onclick="OnVideoLinkUpdate">שמור</button>
             </div>
+            @if (showAlert)
+            {
+                <div class="alert alert-danger" role="alert">
+                    הקישור שהזנת אינו תקין.
+                </div>
+            }
         }
 
 
@@ -68,22 +81,35 @@
                 @if (string.IsNullOrEmpty(Project.ExercisesLink))
                 {<span class="badge">טרם הועלה</span>}
             </a>
-            <button class="edit-icon-btn" @onclick="() => showEditEx = !showEditEx">
+            <button class="edit-icon-btn" @onclick="ToggleExPres">
                 <i class="bi bi-pencil"></i>
             </button>
         </div>
         @if (showEditEx)
         {
             <div class="edit-box">
-                <input @bind="Project.ExercisesLink" placeholder="הדבק לינק לתרגול..." />
-                <button @onclick="() => showEditEx = false">שמור</button>
+                <input @bind="Project.ExercisesLink" autofocus placeholder="הדבק לינק לתרגול..." />
+                <button @onclick="OnExercisesLinkUpdate">שמור</button>
             </div>
+            @if (showAlert)
+            {
+                <div class="alert alert-danger" role="alert">
+                    הקישור שהזנת אינו תקין.
+                </div>
+            }
         }
     </div>
 </div>
 
 @code {
-    [Parameter] public MathProject Project { get; set; }
+    [Parameter] public ProjectModel Project { get; set; }
+
+    // משתנים לשליטה על הצגת תיבות העריכה
+    private bool showEditPres = false;
+    private bool showEditVideo = false;
+    private bool showEditEx = false;
+    private bool showAlert = false;
+
 
     public bool IsComplete()
     {
@@ -101,8 +127,77 @@
         }
     }
 
-    // משתנים לשליטה על הצגת תיבות העריכה
-    private bool showEditPres = false;
-    private bool showEditVideo = false;
-    private bool showEditEx = false;
+    private bool IsValidLink(String link)
+    {
+        return !string.IsNullOrEmpty(link) &&
+               (Project.PresentationLink.StartsWith("http://") || link.StartsWith("https://"));
+    }
+
+    #region שמירת השינויים בדטה בייס אחרי עדכון הלינקים
+    private async Task OnPresentationLinkUpdate()
+    {
+        if (IsValidLink(Project.PresentationLink))
+        {
+            showAlert = false;
+            showEditPres = false;
+            await FirebaseService.UpdateProjectAsync(Project);
+        }
+        else
+        {
+            showAlert = true;
+        }
+
+    }
+    private async Task OnVideoLinkUpdate()
+    {
+        if (IsValidLink(Project.VideoLink))
+        {
+            showAlert = false;
+            showEditVideo = false;
+            await FirebaseService.UpdateProjectAsync(Project);
+        }
+        else
+        {
+            showAlert = true;
+        }
+    }
+    private async Task OnExercisesLinkUpdate()
+    {
+        if (IsValidLink(Project.ExercisesLink))
+        {
+            showAlert = false;
+            showEditEx = false;
+            await FirebaseService.UpdateProjectAsync(Project);
+        }
+        else
+        {
+            showAlert = true;
+        }
+
+    }
+    #endregion
+
+    #region טוגל של תיבות העריכה
+    private void ToggleEditPres()
+    {
+        showEditPres = !showEditPres;
+        showEditEx = false;
+        showEditVideo = false;
+        showAlert = false;
+    }
+    private void ToggleVideoPres()
+    {
+        showEditVideo = !showEditVideo;
+        showEditPres = false;
+        showEditEx = false;
+        showAlert = false;
+    }
+    private void ToggleExPres()
+    {
+        showEditEx = !showEditEx;
+        showEditPres = false;
+        showEditVideo = false;
+        showAlert = false;
+    }
+    #endregion
 }

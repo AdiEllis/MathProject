@@ -1,5 +1,6 @@
 ﻿@page "/"
 @using MathProject.Models
+@inject FirebaseService FirebaseService
 
 <PageTitle>פרויקטים</PageTitle>
 
@@ -17,55 +18,18 @@
     <div class="main-grid">
         @foreach (var p in projects)
         {
-            <ProjectCard Project="p" />
+            <ProjectCard @key="p.Id" Project="p" />
         }
     </div>
 </div>
 
 @code {
-    private List<MathProject> projects = new List<MathProject>
-{
-        new MathProject {
-            Topic = "הסתברות",
-            Students = "קבוצה 1",
-            PresentationLink = "https://notebooklm.google.com/notebook/3b28c962-c3f4-445c-a606-9f4d312e686e?artifactId=f71cdbe2-93ae-4556-9b84-403fd621e708",
-            VideoLink = "https://notebooklm.google.com/notebook/3b28c962-c3f4-445c-a606-9f4d312e686e?artifactId=f71cdbe2-93ae-4556-9b84-403fd621e708",
-            ExercisesLink = "https://notebooklm.google.com/notebook/3b28c962-c3f4-445c-a606-9f4d312e686e?artifactId=f71cdbe2-93ae-4556-9b84-403fd621e708",
-        },
-        new MathProject {
-            Topic = "גדילה ודעיכה",
-            Students = "קבוצה 2",
-            PresentationLink = "",
-            VideoLink = "",
-            ExercisesLink = ""
-        },
-        new MathProject {
-            Topic = "טריגונומטריה",
-            Students = "קבוצה 3",
-            PresentationLink = "",
-            VideoLink = "",
-            ExercisesLink = ""
-        },
-        new MathProject {
-            Topic = "דמיון משולשים",
-            Students = "קבוצה 4",
-            PresentationLink = "",
-            VideoLink = "",
-            ExercisesLink = ""
-        },
-        new MathProject {
-            Topic = "גידול לינארי",
-            Students = "קבוצה 5",
-            PresentationLink = "",
-            VideoLink = "",
-            ExercisesLink = ""
-        },
-        new MathProject {
-            Topic = "סטטיסטיקה",
-            Students = "קבוצה 6",
-            PresentationLink = "",
-            VideoLink = "",
-            ExercisesLink = ""
-        }
-    };
+
+    private List<ProjectModel> projects;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // זו השורה שמושכת את הכל מהענן
+        projects = await FirebaseService.GetProjectsAsync();
+    }
 }
