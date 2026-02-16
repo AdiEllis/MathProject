@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "MathProject",
   "resources": {
-    "hash": "sha256-pggwvs79VTxAKEbIuGYiI0gur3q0bZnmbyGoN5RB0EY=",
+    "hash": "sha256-gxD1jd07B3mG0fojfLEyiYx7SIWnoGVtdzalFnByt28=",
     "jsModuleNative": {
       "dotnet.native.js": "sha256-NljIbpK/1KCj0+knpX8U77Rbl5kTtfFIuFjK7AuczEw="
     },
@@ -20,7 +20,7 @@
     "assembly": {
       "Firebase.wasm": "sha256-42hyRAjhLpSRVOQiN2G88NXvmL/AebxxGfOtZJaTzik=",
       "LiteDB.wasm": "sha256-pxLAT04Ri3sXh90k2oyjIWa23sypM4IByhgj1e5eOjA=",
-      "Microsoft.AspNetCore.Components.wasm": "sha256-WRlpcjyD7PywhjkYOWiRROxvtZRu96Z//eFNfXqCALo=",
+      "Microsoft.AspNetCore.Components.wasm": "sha256-sUSMd1qDNrD5nwdUIbyRstM8JgxPedIbkU5CiT0SGuo=",
       "Microsoft.AspNetCore.Components.Web.wasm": "sha256-pvmAHfZAY9Hyt6vlzSfKoDVjZdUqJboIfi2/RfZbogc=",
       "Microsoft.AspNetCore.Components.WebAssembly.wasm": "sha256-NCsyCyYQ2UbTAfQEz7GVlo5TbN8tj61K1/RnEQgqUFU=",
       "Microsoft.Extensions.Configuration.wasm": "sha256-od574rRtVVRJj+24jbl8j3GdQFpxlJOpSx+pEMw1Q18=",
@@ -67,7 +67,7 @@
       "System.Runtime.Numerics.wasm": "sha256-1+j/N+URKaDYFdyb+3YJnPAKl+ClialLG1R+4owo+Pg=",
       "System.Runtime.Serialization.Formatters.wasm": "sha256-6Qbmf2FTowf1iMMK1Anv2+gATUmHikEIW6DMcFfb1FA=",
       "System.Runtime.Serialization.Primitives.wasm": "sha256-6+pcBu86Mt73RHJPvk/bjWu2Ymys1q2Ido0BcyWs9UM=",
-      "System.Runtime.wasm": "sha256-FtcErTPaZUOijdPr7dT++bTuR6LVUgPW8h9vrMn/lCg=",
+      "System.Runtime.wasm": "sha256-PiB9F62k0ATCC4sypLPkuUFCDNy5C+wj/pWibwx99HQ=",
       "System.Security.Cryptography.wasm": "sha256-4VivBrmA5YmgW3K9IxZhKpNXMc7jEa8wJs8cqtaDQNc=",
       "System.Text.Encoding.Extensions.wasm": "sha256-au0ZvmnkBJAxTDg2H7xvBI3JyLzgffZxdh2ITjL+o2A=",
       "System.Text.Encodings.Web.wasm": "sha256-YZTyVkf+6++HcEP8mHZ6czMP3Ul886NWB5TYbCMFawE=",
@@ -80,7 +80,7 @@
       "System.wasm": "sha256-jXhnUNHzjjL7Plo7WcHuX7V5Dc/Umt+qmGGC+Js76SE=",
       "netstandard.wasm": "sha256-gZG9lj2axXm4C9F23+kUt/t85487FFuVoCQQ0QDyWxg=",
       "System.Private.CoreLib.wasm": "sha256-ycwRKgZOQsl4jlUqp+af8EKSqswkQ78tYKs4f31H2Xw=",
-      "MathProject.wasm": "sha256-d0o7BDWgfonuAt9R3XKEWD4yMoATYh9GPr3wbhC1XdA="
+      "MathProject.wasm": "sha256-cNS2uuJhV0aq6ZByz5E0eJHd/eUTL4ifFil01a8CodA="
     }
   },
   "cacheBootResources": true,
