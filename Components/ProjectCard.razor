@@ -130,7 +130,7 @@
     private bool IsValidLink(String link)
     {
         return !string.IsNullOrEmpty(link) &&
-               (Project.PresentationLink.StartsWith("http://") || link.StartsWith("https://"));
+               (link.StartsWith("http://") || link.StartsWith("https://"));
     }
 
     #region שמירת השינויים בדטה בייס אחרי עדכון הלינקים
