@@ -1,0 +1,64 @@
+﻿@using MathProject.Models
+
+<div class="dashboard-wrapper">
+    <div class="header-row">
+        <div class="progress-info">
+            <span class="label">התקדמות:</span>
+            <span class="count">@CompletedCount/@Projects.Count</span>
+        </div>
+        <div class="progress-bar-container">
+            <div class="progress-bar-fill" style="width: @(GetOverallProgress())%"></div>
+        </div>
+    </div>
+
+    <div class="projects-track">
+        @foreach (var p in Projects)
+        {
+            <div class="project-item @GetStatusClass(p)" title="@GetMissingInfo(p)">
+                @p.Topic
+            </div>
+        }
+    </div>
+
+    <div class="dashboard-footer">
+        <span class="legend-chip"><i class="c-dot complete"></i> מוכן</span>
+        <span class="legend-chip"><i class="c-dot in-progress"></i> בעבודה</span>
+        <span class="legend-chip"><i class="c-dot not-started"></i> חסר</span>
+    </div>
+</div>
+
+
+@code {
+    [Parameter] public List<ProjectModel> Projects { get; set; } = new();
+
+    private int CompletedCount => Projects.Count(p => IsComplete(p));
+
+    private bool IsComplete(ProjectModel p) =>
+        !string.IsNullOrEmpty(p.PresentationLink) &&
+        !string.IsNullOrEmpty(p.VideoLink) &&
+        !string.IsNullOrEmpty(p.ExercisesLink);
+
+    private int GetOverallProgress() => Projects.Count > 0 ? (CompletedCount * 100) / Projects.Count : 0;
+
+    private string GetStatusClass(ProjectModel p)
+    {
+        int count = 0;
+        if (!string.IsNullOrEmpty(p.PresentationLink)) count++;
+        if (!string.IsNullOrEmpty(p.VideoLink)) count++;
+        if (!string.IsNullOrEmpty(p.ExercisesLink)) count++;
+
+        if (count == 3) return "complete";
+        if (count > 0) return "in-progress";
+        return "not-started";
+    }
+
+    private string GetMissingInfo(ProjectModel p)
+    {
+        var missing = new List<string>();
+        if (string.IsNullOrEmpty(p.PresentationLink)) missing.Add("מצגת");
+        if (string.IsNullOrEmpty(p.VideoLink)) missing.Add("סרטון");
+        if (string.IsNullOrEmpty(p.ExercisesLink)) missing.Add("תרגול");
+
+        return missing.Count == 0 ? "הכל מוכן!" : "חסר: " + string.Join(", ", missing);
+    }
+}

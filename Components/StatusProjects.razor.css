@@ -1,0 +1,129 @@
+﻿.dashboard-wrapper {
+    /* שקיפות גבוהה (0.7) כדי שהמשבצות ייראו בבירור */
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(5px); /* אפקט זכוכית יפה */
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 123, 255, 0.1);
+    margin: 10px auto 25px auto;
+    max-width: 900px;
+    direction: rtl;
+}
+
+/* מוודא שאין רקע לבן אטום על כל האלמנט */
+.header-row, .projects-track, .dashboard-footer {
+    background: transparent !important;
+}
+
+.header-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.progress-info {
+    display: flex;
+    gap: 5px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+    .progress-info .count {
+        font-weight: bold;
+        color: #007bff;
+    }
+
+.progress-bar-container {
+    flex-grow: 1;
+    height: 8px;
+    background: rgba(0,0,0,0.05);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: #28a745;
+    transition: width 0.5s ease;
+}
+
+.projects-track {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.project-item {
+    width: 85px;
+    height: 38px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: bold;
+    transition: all 0.2s;
+    cursor: help;
+    border: 1px solid transparent;
+    /* מבטיח שה-title של הדפדפן יעבוד */
+    pointer-events: auto !important;
+}
+
+/* צבעים ברורים עם שקיפות קלה */
+.not-started {
+    background: rgba(248, 249, 250, 0.9);
+    color: #adb5bd;
+    border: 1px dashed #dee2e6;
+}
+
+.in-progress {
+    background: rgba(255, 243, 205, 0.9);
+    color: #856404;
+    border: 1px solid #ffeeba;
+}
+
+.complete {
+    background: rgba(212, 237, 218, 0.9);
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+@media (max-width: 600px) {
+    .dashboard-wrapper {
+        width: 92%;
+        padding: 10px;
+    }
+
+    .project-item {
+        width: calc(33% - 8px);
+        height: 32px;
+        font-size: 0.65rem;
+    }
+}
+
+.dashboard-footer {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.legend-chip {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.7rem;
+    color: #666;
+}
+
+.c-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}

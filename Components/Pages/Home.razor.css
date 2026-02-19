@@ -74,13 +74,17 @@ h1 {
     line-height: 1.6;
 }
 
-/* פס דקורטיבי מתחת לכותרת בהשראת ה-AI */
 .header-accent {
     width: 80px;
     height: 6px;
     background: linear-gradient(90deg, #1e3c72, #48c6ef);
-    margin: 10px auto 40px;
+    margin: 2px auto 20px;
     border-radius: 50px;
     box-shadow: 0 4px 15px rgba(72, 198, 239, 0.4);
     animation: accentExpand 1.5s ease-out 0.5s both;
+}
+
+.status-projects {
+    display: flex;
+    justify-content: center;
 }

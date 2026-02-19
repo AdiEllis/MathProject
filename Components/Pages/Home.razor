@@ -14,11 +14,13 @@
         </h1>
         <div class="header-accent"></div>
     </div>
-
+    <div class="status-projects">
+        <StatusProjects Projects="projects" />
+    </div>
     <div class="main-grid">
         @foreach (var p in projects)
         {
-            <ProjectCard @key="p.Id" Project="p" />
+            <ProjectCard @key="p.Id" Project="p" OnDataChanged="StateHasChanged"/>
         }
     </div>
 </div>

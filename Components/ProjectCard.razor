@@ -115,6 +115,7 @@
 
 @code {
     [Parameter] public ProjectModel Project { get; set; }
+    [Parameter] public EventCallback OnDataChanged { get; set; }
 
     // משתנים לשליטה על הצגת תיבות העריכה
     private bool showEditPres = false;
@@ -146,11 +147,13 @@
             closeEditBok();
             clearField();
             await FirebaseService.UpdateProjectAsync(Project);
+            await OnDataChanged.InvokeAsync(); // מעדכן את הסטטוס בר
         }
         else if (IsValidLink(linkValue))
         {
             closeEditBok();
             await FirebaseService.UpdateProjectAsync(Project);
+            await OnDataChanged.InvokeAsync(); // האיתות נשלחמעדכן את הסטטוס בר
         }
         else
         {
