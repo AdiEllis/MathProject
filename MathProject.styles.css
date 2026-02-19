@@ -250,17 +250,20 @@ h1[b-cznl2iz10t] {
 .status-projects[b-cznl2iz10t] {
     display: flex;
     justify-content: center;
+    backdrop-filter: blur(10px);
 }
 /* /Components/ProjectCard.razor.rz.scp.css */
 .project-card[b-r09047jsjo] {
     background: #ffffff;
-    border-radius: 15px;
+    border-radius: 16px;
     padding: 24px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
     border-right: 6px solid #4a90e2;
     text-align: right;
     direction: rtl;
-    transition: transform 0.2s ease;
+    transition: all 0.3s ease; /* מגדיר שהשינוי ייקח 0.3 שניות */
+
+
     margin: 10px;
     display: flex;
     flex-direction: column;
@@ -298,9 +301,11 @@ h1[b-cznl2iz10t] {
 
 }
 
-    .project-card:hover[b-r09047jsjo] {
-        transform: translateY(-5px);
-    }
+.project-card:hover[b-r09047jsjo] {
+    transform: translateY(-8px); /* מקפיץ את הכרטיסייה למעלה */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* מוסיף צל עמוק יותר בזמן ריחוף */
+    border-color: #2b6cb0; /* משנה מעט את צבע המסגרת */
+}
 
 .links-container[b-r09047jsjo] {
     display: flex;
