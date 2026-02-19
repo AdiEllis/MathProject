@@ -237,15 +237,19 @@ h1[b-cznl2iz10t] {
     line-height: 1.6;
 }
 
-/* פס דקורטיבי מתחת לכותרת בהשראת ה-AI */
 .header-accent[b-cznl2iz10t] {
     width: 80px;
     height: 6px;
     background: linear-gradient(90deg, #1e3c72, #48c6ef);
-    margin: 10px auto 40px;
+    margin: 2px auto 20px;
     border-radius: 50px;
     box-shadow: 0 4px 15px rgba(72, 198, 239, 0.4);
     animation: accentExpand 1.5s ease-out 0.5s both;
+}
+
+.status-projects[b-cznl2iz10t] {
+    display: flex;
+    justify-content: center;
 }
 /* /Components/ProjectCard.razor.rz.scp.css */
 .project-card[b-r09047jsjo] {
@@ -459,4 +463,134 @@ h1[b-cznl2iz10t] {
         opacity: 1;
         transform: translateY(0);
     }
+}
+/* /Components/StatusProjects.razor.rz.scp.css */
+.dashboard-wrapper[b-abz0f8vyr4] {
+    /* שקיפות גבוהה (0.7) כדי שהמשבצות ייראו בבירור */
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(5px); /* אפקט זכוכית יפה */
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 123, 255, 0.1);
+    margin: 10px auto 25px auto;
+    max-width: 900px;
+    direction: rtl;
+}
+
+/* מוודא שאין רקע לבן אטום על כל האלמנט */
+.header-row[b-abz0f8vyr4], .projects-track[b-abz0f8vyr4], .dashboard-footer[b-abz0f8vyr4] {
+    background: transparent !important;
+}
+
+.header-row[b-abz0f8vyr4] {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.progress-info[b-abz0f8vyr4] {
+    display: flex;
+    gap: 5px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+    .progress-info .count[b-abz0f8vyr4] {
+        font-weight: bold;
+        color: #007bff;
+    }
+
+.progress-bar-container[b-abz0f8vyr4] {
+    flex-grow: 1;
+    height: 8px;
+    background: rgba(0,0,0,0.05);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar-fill[b-abz0f8vyr4] {
+    height: 100%;
+    background: #28a745;
+    transition: width 0.5s ease;
+}
+
+.projects-track[b-abz0f8vyr4] {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.project-item[b-abz0f8vyr4] {
+    width: 85px;
+    height: 38px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: bold;
+    transition: all 0.2s;
+    cursor: help;
+    border: 1px solid transparent;
+    /* מבטיח שה-title של הדפדפן יעבוד */
+    pointer-events: auto !important;
+}
+
+/* צבעים ברורים עם שקיפות קלה */
+.not-started[b-abz0f8vyr4] {
+    background: rgba(248, 249, 250, 0.9);
+    color: #adb5bd;
+    border: 1px dashed #dee2e6;
+}
+
+.in-progress[b-abz0f8vyr4] {
+    background: rgba(255, 243, 205, 0.9);
+    color: #856404;
+    border: 1px solid #ffeeba;
+}
+
+.complete[b-abz0f8vyr4] {
+    background: rgba(212, 237, 218, 0.9);
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+@media (max-width: 600px) {
+    .dashboard-wrapper[b-abz0f8vyr4] {
+        width: 92%;
+        padding: 10px;
+    }
+
+    .project-item[b-abz0f8vyr4] {
+        width: calc(33% - 8px);
+        height: 32px;
+        font-size: 0.65rem;
+    }
+}
+
+.dashboard-footer[b-abz0f8vyr4] {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.legend-chip[b-abz0f8vyr4] {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.7rem;
+    color: #666;
+}
+
+.c-dot[b-abz0f8vyr4] {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
 }

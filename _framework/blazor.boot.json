@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "MathProject",
   "resources": {
-    "hash": "sha256-/1OHc0fj1XBPZn1gf6EEr7EofEuxornuqHg3temfcrY=",
+    "hash": "sha256-XNTGyDZj02iZ9FGDIz0PoHhhXnowFYYe7IQGzB8GFVs=",
     "jsModuleNative": {
       "dotnet.native.js": "sha256-NljIbpK/1KCj0+knpX8U77Rbl5kTtfFIuFjK7AuczEw="
     },
@@ -20,7 +20,7 @@
     "assembly": {
       "Firebase.wasm": "sha256-42hyRAjhLpSRVOQiN2G88NXvmL/AebxxGfOtZJaTzik=",
       "LiteDB.wasm": "sha256-pxLAT04Ri3sXh90k2oyjIWa23sypM4IByhgj1e5eOjA=",
-      "Microsoft.AspNetCore.Components.wasm": "sha256-sUSMd1qDNrD5nwdUIbyRstM8JgxPedIbkU5CiT0SGuo=",
+      "Microsoft.AspNetCore.Components.wasm": "sha256-oChLeDT2SzgHMbpMFR5lp1WU3j19NOXPSbc3BsmRz+I=",
       "Microsoft.AspNetCore.Components.Web.wasm": "sha256-pvmAHfZAY9Hyt6vlzSfKoDVjZdUqJboIfi2/RfZbogc=",
       "Microsoft.AspNetCore.Components.WebAssembly.wasm": "sha256-NCsyCyYQ2UbTAfQEz7GVlo5TbN8tj61K1/RnEQgqUFU=",
       "Microsoft.Extensions.Configuration.wasm": "sha256-od574rRtVVRJj+24jbl8j3GdQFpxlJOpSx+pEMw1Q18=",
@@ -80,7 +80,7 @@
       "System.wasm": "sha256-jXhnUNHzjjL7Plo7WcHuX7V5Dc/Umt+qmGGC+Js76SE=",
       "netstandard.wasm": "sha256-gZG9lj2axXm4C9F23+kUt/t85487FFuVoCQQ0QDyWxg=",
       "System.Private.CoreLib.wasm": "sha256-ycwRKgZOQsl4jlUqp+af8EKSqswkQ78tYKs4f31H2Xw=",
-      "MathProject.wasm": "sha256-uvhhJJvew/y43sOl988Tyng2PDqqd9zBIaPdo/ektaY="
+      "MathProject.wasm": "sha256-VERECF+3pdzSqm0vX1Oh8yQII9GSXn3M/SBiDewI/gg="
     }
   },
   "cacheBootResources": true,
