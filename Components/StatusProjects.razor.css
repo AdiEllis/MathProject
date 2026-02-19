@@ -130,3 +130,49 @@
     border-radius: 50%;
     display: inline-block;
 }
+
+/* 1. הגדרת המיקום של הבועה */
+.project-item {
+    position: relative; /* הכרחי כדי שהבועה תצוף מעל הריבוע */
+}
+
+    /* 2. עיצוב בועת הטקסט */
+    .project-item::after {
+        content: attr(data-tooltip); /* שואב את הטקסט שכתוב ב-data-tooltip */
+        position: absolute;
+        bottom: 125%; /* ממקם מעל הריבוע */
+        left: 50%;
+        transform: translateX(-50%) scale(0.8); /* מתחיל קטן וזז לאמצע */
+        background: rgba(33, 37, 41, 0.95); /* שחור עמוק מעט שקוף */
+        color: white;
+        padding: 8px 12px;
+        border-radius: 8px;
+        font-size: 0.75rem;
+        white-space: nowrap; /* מונע מהטקסט להישבר לשורות */
+        z-index: 1000;
+        opacity: 0;
+        pointer-events: none; /* שלא יפריע לעכבר */
+        transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.27);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    /* 3. הוספת משולש קטן מתחת לבועה */
+    .project-item::before {
+        content: '';
+        position: absolute;
+        bottom: 110%;
+        left: 50%;
+        transform: translateX(-50%) scale(0);
+        border: 6px solid transparent;
+        border-top-color: rgba(33, 37, 41, 0.95);
+        z-index: 1000;
+        opacity: 0;
+        transition: all 0.2s ease;
+    }
+
+    /* 4. מה קורה בזמן ריחוף */
+    .project-item:hover::after,
+    .project-item:hover::before {
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+    }

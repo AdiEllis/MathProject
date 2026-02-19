@@ -14,7 +14,7 @@
     <div class="projects-track">
         @foreach (var p in Projects)
         {
-            <div class="project-item @GetStatusClass(p)" title="@GetMissingInfo(p)">
+            <div class="project-item @GetStatusClass(p)" data-tooltip="@GetMissingInfo(p)">
                 @p.Topic
             </div>
         }
