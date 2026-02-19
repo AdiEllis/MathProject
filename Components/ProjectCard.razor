@@ -31,8 +31,12 @@
         @if (showEditPres)
         {
             <div class="edit-box">
-                <input @bind="Project.PresentationLink" autofocus placeholder="הדבק לינק למצגת..." />
-                <button @onclick="OnPresentationLinkUpdate">שמור</button>
+                <input @bind="Project.PresentationLink" placeholder="הדבק לינק למצגת..." />
+                <button @onclick='() => OnLinkUpdate(Project.PresentationLink,
+                                  () => showEditPres = false,
+                                  () => Project.PresentationLink = "")'>
+                    שמור
+                </button>
             </div>
             @if (showAlert)
             {
@@ -59,8 +63,12 @@
         @if (showEditVideo)
         {
             <div class="edit-box">
-                <input @bind="Project.VideoLink" placeholder="הדבק לינק לסרטון..." autofocus />
-                <button @onclick="OnVideoLinkUpdate">שמור</button>
+                <input @bind="Project.VideoLink" placeholder="הדבק לינק לסרטון..." />
+                <button @onclick='() => OnLinkUpdate(Project.VideoLink,
+                                  () => showEditVideo = false,
+                                  () => Project.VideoLink = "")'>
+                    שמור
+                </button>
             </div>
             @if (showAlert)
             {
@@ -88,8 +96,12 @@
         @if (showEditEx)
         {
             <div class="edit-box">
-                <input @bind="Project.ExercisesLink" autofocus placeholder="הדבק לינק לתרגול..." />
-                <button @onclick="OnExercisesLinkUpdate">שמור</button>
+                <input @bind="Project.ExercisesLink" placeholder="הדבק לינק לתרגול..." />
+                <button @onclick='() => OnLinkUpdate(Project.ExercisesLink,
+                                  () => showEditEx = false,
+                                  () => Project.ExercisesLink = "")'>
+                    שמור
+                </button>
             </div>
             @if (showAlert)
             {
@@ -120,63 +132,42 @@
 
     private async Task OpenLink(string url)
     {
-        if (!string.IsNullOrEmpty(url))
+        if (!IsEmptyLink(url))
         {
             // הפקודה הזו אומרת לדפדפן לפתוח חלון חדש בצורה חיצונית לחלוטין ל-Blazor
             await JSRuntime.InvokeVoidAsync("open", url, "_blank");
         }
     }
 
+    private async Task OnLinkUpdate(string linkValue, Action closeEditBok, Action clearField)
+    {
+        if (IsEmptyLink(linkValue))
+        {
+            closeEditBok();
+            clearField();
+            await FirebaseService.UpdateProjectAsync(Project);
+        }
+        else if (IsValidLink(linkValue))
+        {
+            closeEditBok();
+            await FirebaseService.UpdateProjectAsync(Project);
+        }
+        else
+        {
+            clearField();
+            showAlert = true;
+        }
+
+    }
+    #region בדיקת תקינות הקישור
     private bool IsValidLink(String link)
     {
-        return !string.IsNullOrEmpty(link) &&
-               (link.StartsWith("http://") || link.StartsWith("https://"));
+        return link.StartsWith("http://") || link.StartsWith("https://");
     }
 
-    #region שמירת השינויים בדטה בייס אחרי עדכון הלינקים
-    private async Task OnPresentationLinkUpdate()
+    private bool IsEmptyLink(String link)
     {
-        if (IsValidLink(Project.PresentationLink))
-        {
-            showAlert = false;
-            showEditPres = false;
-            await FirebaseService.UpdateProjectAsync(Project);
-        }
-        else
-        {
-            Project.PresentationLink = "";
-            showAlert = true;
-        }
-
-    }
-    private async Task OnVideoLinkUpdate()
-    {
-        if (IsValidLink(Project.VideoLink))
-        {
-            showAlert = false;
-            showEditVideo = false;
-            await FirebaseService.UpdateProjectAsync(Project);
-        }
-        else
-        {
-            Project.VideoLink = "";
-            showAlert = true;
-        }
-    }
-    private async Task OnExercisesLinkUpdate()
-    {
-        if (IsValidLink(Project.ExercisesLink))
-        {
-            showAlert = false;
-            showEditEx = false;
-            await FirebaseService.UpdateProjectAsync(Project);
-        }
-        else
-        {
-            Project.ExercisesLink = "";
-            showAlert = true;
-        }
-
+        return string.IsNullOrEmpty(link);
     }
     #endregion
 
