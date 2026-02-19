@@ -476,6 +476,9 @@ h1[b-cznl2iz10t] {
     margin: 10px auto 25px auto;
     max-width: 900px;
     direction: rtl;
+    border: 1px solid rgba(0, 0, 0, 0.1); /* שינוי: בורדר עדין יותר מסביב */
+    border-top: 4px solid #28a745; /* שינוי: ירוק במקום כחול */
+    box-shadow: 0 4px 20px rgba(40, 167, 69, 0.12); /* שינוי: הילה ירוקה עדינה מאוד */
 }
 
 /* מוודא שאין רקע לבן אטום על כל האלמנט */
@@ -499,7 +502,7 @@ h1[b-cznl2iz10t] {
 
     .progress-info .count[b-abz0f8vyr4] {
         font-weight: bold;
-        color: #007bff;
+        color: #28a745; /* שינוי: ירוק במקום כחול */
     }
 
 .progress-bar-container[b-abz0f8vyr4] {
@@ -514,6 +517,7 @@ h1[b-cznl2iz10t] {
     height: 100%;
     background: #28a745;
     transition: width 0.5s ease;
+    box-shadow: 0 0 8px rgba(40, 167, 69, 0.4); /* שינוי: מוסיף הילה ירוקה עדינה */
 }
 
 .projects-track[b-abz0f8vyr4] {
@@ -587,10 +591,9 @@ h1[b-cznl2iz10t] {
     font-size: 0.7rem;
     color: #666;
 }
-
-.c-dot[b-abz0f8vyr4] {
-    width: 8px;
-    height: 8px;
+.dot-sample[b-abz0f8vyr4] {
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
     display: inline-block;
 }
