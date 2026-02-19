@@ -111,6 +111,12 @@
             }
         }
     </div>
+    @if (showSuccessMessage)
+    {
+        <div class="success-toast">
+            <i class="oi oi-check"></i> השינויים נשמרו בהצלחה!
+        </div>
+    }
 </div>
 
 @code {
@@ -122,7 +128,21 @@
     private bool showEditVideo = false;
     private bool showEditEx = false;
     private bool showAlert = false;
+    private bool showSuccessMessage = false;
 
+    private async Task SaveChanges()
+    {
+        // ... הקוד הקיים שלך ששומר ל-Firebase ...
+
+        // הצגת ההודעה
+        showSuccessMessage = true;
+        StateHasChanged();
+
+        // העלמת ההודעה אוטומטית אחרי 3 שניות
+        await Task.Delay(3000);
+        showSuccessMessage = false;
+        StateHasChanged();
+    }
 
     public bool IsComplete()
     {
@@ -154,6 +174,7 @@
             closeEditBok();
             await FirebaseService.UpdateProjectAsync(Project);
             await OnDataChanged.InvokeAsync(); // האיתות נשלחמעדכן את הסטטוס בר
+            
         }
         else
         {

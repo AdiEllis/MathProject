@@ -87,4 +87,5 @@ h1 {
 .status-projects {
     display: flex;
     justify-content: center;
+    backdrop-filter: blur(10px);
 }

@@ -1,11 +1,25 @@
-﻿body {
+﻿@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap');
+body {
     background-color: #f4f7f9;
-    background-image: linear-gradient(to right, rgba(0, 123, 255, 0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 123, 255, 0.1) 1px, transparent 1px) !important;
-    background-size: 20px 20px;
+    /* החלפת הפונט ל-Assistant */
+    font-family: 'Assistant', sans-serif !important;
     direction: rtl;
     margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-attachment: fixed; /* מומלץ: גורם למשבצות לא לזוז כשגוללים */
+    /* הגדרת משבצות הרקע (הקוד המתוקן שלך) */
+    background-image: linear-gradient(to right, rgba(0, 123, 255, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 123, 255, 0.05) 1px, transparent 1px) !important;
+    background-size: 20px 20px;
+    background-attachment: fixed;
+}
+
+/* שינוי כותרות לכחול "רויאל" מודרני */
+h1, h2, h3, .project-id {
+    color: #1a365d !important; /* כחול נייבי עמוק ומקצועי */
+}
+
+/* עדכון צבע הלחצנים של Bootstrap לכחול מודרני יותר */
+.btn-primary {
+    background-color: #2b6cb0 !important;
+    border-color: #2b6cb0 !important;
 }
 
 /* ???? ?? ????? */
@@ -53,4 +67,29 @@ h1 {
         grid-template-columns: 1fr;
     }
     /* ??? ??? ?????? */
+}
+
+.success-toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #28a745;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    z-index: 9999;
+    animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
