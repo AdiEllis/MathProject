@@ -8,6 +8,14 @@
     <p class="students">מוגש ע"י: @Project.Students</p>
 
     @* סטטוס כללי של הפרויקט *@
+    @if(string.IsNullOrEmpty(Project.PresentationLink) &&
+            string.IsNullOrEmpty(Project.VideoLink) &&
+            string.IsNullOrEmpty(Project.ExercisesLink)) {
+    <div class="status.missing)">
+        <i class="bi bi-hourglass-split"></i>
+        הגיע הזמן להתחיל לעבוד
+    </div>
+            }
     <div class="status @(IsComplete() ? "done" : "working")">
         <i class="bi @(IsComplete() ? "bi-check-circle-fill" : "bi-hourglass-split")"></i>
         @(IsComplete() ? "מוכן ללמידה" : "בעבודה")
