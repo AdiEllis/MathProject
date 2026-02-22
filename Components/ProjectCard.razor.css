@@ -140,6 +140,11 @@
         background: #d4edda;
         color: #155724;
     }
+    .status.missing {
+        background: rgba(248, 249, 250, 0.9);
+        color: #adb5bd;
+        border: 1px dashed #dee2e6;
+    }
 
 .edit-wrapper {
     display: flex;
