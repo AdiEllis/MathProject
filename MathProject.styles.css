@@ -395,6 +395,11 @@ h1[b-cznl2iz10t] {
         background: #d4edda;
         color: #155724;
     }
+    .status.missing[b-r09047jsjo] {
+        background: rgba(248, 249, 250, 0.9);
+        color: #adb5bd;
+        border: 1px dashed #dee2e6;
+    }
 
 .edit-wrapper[b-r09047jsjo] {
     display: flex;
