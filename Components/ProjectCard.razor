@@ -31,10 +31,10 @@
         @if (showEditPres)
         {
             <div class="edit-box">
-                <input @bind="Project.PresentationLink" placeholder="הדבק לינק למצגת..." />
-                <button @onclick='() => OnLinkUpdate(Project.PresentationLink,
+                <input @bind="tempPresentationLink" placeholder="הדבק לינק למצגת..."/>
+                <button @onclick='() => OnLinkUpdate(tempPresentationLink,
                                   () => showEditPres = false,
-                                  () => Project.PresentationLink = "")'>
+                                  () => Project.PresentationLink = tempPresentationLink)'>
                     שמור
                 </button>
             </div>
@@ -63,10 +63,10 @@
         @if (showEditVideo)
         {
             <div class="edit-box">
-                <input @bind="Project.VideoLink" placeholder="הדבק לינק לסרטון..." />
-                <button @onclick='() => OnLinkUpdate(Project.VideoLink,
+                <input @bind="tempVideoLink" placeholder="הדבק לינק לסרטון..." />
+                <button @onclick='() => OnLinkUpdate(tempVideoLink,
                                   () => showEditVideo = false,
-                                  () => Project.VideoLink = "")'>
+                                  () => Project.VideoLink = tempVideoLink)'>
                     שמור
                 </button>
             </div>
@@ -96,10 +96,10 @@
         @if (showEditEx)
         {
             <div class="edit-box">
-                <input @bind="Project.ExercisesLink" placeholder="הדבק לינק לתרגול..." />
-                <button @onclick='() => OnLinkUpdate(Project.ExercisesLink,
+                <input @bind="tempExercisesLink" placeholder="הדבק לינק לתרגול..." />
+                <button @onclick='() => OnLinkUpdate(tempExercisesLink,
                                   () => showEditEx = false,
-                                  () => Project.ExercisesLink = "")'>
+                                  () => Project.ExercisesLink = tempExercisesLink)'>
                     שמור
                 </button>
             </div>
@@ -129,6 +129,17 @@
     private bool showEditEx = false;
     private bool showAlert = false;
     private bool showSuccessMessage = false;
+    private string tempPresentationLink;
+    private string tempVideoLink;
+    private string tempExercisesLink;
+
+    protected override void OnParametersSet()
+    {
+        // אתחול המשתנים הזמניים עם הערכים הנוכחיים של הפרויקט
+        tempPresentationLink = Project.PresentationLink;
+        tempVideoLink = Project.VideoLink;
+        tempExercisesLink = Project.ExercisesLink;
+    }
 
     private async Task SaveChanges()
     {
@@ -160,25 +171,25 @@
         }
     }
 
-    private async Task OnLinkUpdate(string linkValue, Action closeEditBok, Action clearField)
+    private async Task OnLinkUpdate(string linkValue, Action closeEditBok, Action setTempLinkOnObject)
     {
         if (IsEmptyLink(linkValue))
         {
             closeEditBok();
-            clearField();
+            setTempLinkOnObject();
             await FirebaseService.UpdateProjectAsync(Project);
             await OnDataChanged.InvokeAsync(); // מעדכן את הסטטוס בר
         }
         else if (IsValidLink(linkValue))
         {
             closeEditBok();
+            setTempLinkOnObject();
             await FirebaseService.UpdateProjectAsync(Project);
             await OnDataChanged.InvokeAsync(); // האיתות נשלחמעדכן את הסטטוס בר
-            
+
         }
         else
         {
-            clearField();
             showAlert = true;
         }
 
